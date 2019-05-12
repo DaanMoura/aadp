@@ -26,8 +26,9 @@ retirar_todos(Elem,[Cabeca|Cauda],[Cabeca|Cauda_Resultante]) :-
   Elem \== Cabeca.
 retirar_todos(Elem,Cauda,Cauda_Resultante).
 
+
 concatena([],L,L).
-concatena([Cabeca,Cauda],L2,[Cabeca|Resultado]) :- 
+concatena([Cabeca|Cauda],L2,[Cabeca|Resultado]) :- 
   concatena(Cauda,L2,Resultado).
 
 soma([],0).
