@@ -20,16 +20,13 @@ esta_no_mapa(p(X,Y)) :-
     Y < 6.
 
 % pegando sujeira
-s([p(X, Y), Sacola, Sujeiras], [p(SX, SY), Sacola2, Sujeiras2]) :-
-    adjacente(p(X, Y),p(SX, SY)),
-    pertence(p(SX, SY),Sujeiras),
+s([Pos, Sacola, Sujeiras], [Pos, Sacola2, Sujeiras2]) :-
+    pertence(p(X, Y),Sujeiras),
     retirar_elemento(p(SX, SY),Sujeiras,Sujeiras2),
-    Sacola2 = Sacola + 1,
-    esta_no_mapa(p(SX, SY)).
+    Sacola2 is Sacola + 1. 
     
-    
-
-s([p(X, Y), _, _], [p(SX, SY), _, _]) :- 
+% andando 
+s([p(X, Y), Sacola, Sujeiras], [p(SX, SY), Sacola, Sujeiras]) :- 
     esta_no_mapa(p(SX, SY)),
     adjacente(p(X,Y), p(SX, SY)).
 
