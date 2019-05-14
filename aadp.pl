@@ -12,12 +12,18 @@ lixeira(p(10,5)).
 
 powerstation(p(10,1)).
 
+parede(p(4,1),p(5,1)).
+
 % verificando limites
 fora_do_mapa(p(X,Y)) :-
   X = 0;
   Y = 0;
   X = 11;
   Y = 6.
+
+pode_passar(Pos,Pos2) :-
+  not((parede(Pos,Pos2);parede(Pos2,Pos))),
+  not(fora_do_mapa(Pos2)).
 
 % pegando sujeira
 s([Pos, Sacola, Sujeiras], [Pos, Sacola2, Sujeiras2]) :-
@@ -35,7 +41,7 @@ s([Pos,Sacola,Sujeiras],[Pos,Sacola2,Sujeiras]) :-
 % andando em X 
 s([p(X, Y), Sacola, Sujeiras], [p(SX, Y), Sacola, Sujeiras]) :- 
     (SX is X + 1 ; SX is X - 1),
-    not(fora_do_mapa(p(SX, Y))), writeln('andou em X').
+    pode_passar(p(X,Y),p(SX,Y)).
 
 %subindo no elevador
 s([p(X,Y), Sacola, Sujeiras],[p(X,SY),Sacola,Sujeiras]) :-
