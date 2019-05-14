@@ -7,6 +7,8 @@
 elevador(4).
 elevador(8).
 
+powerstation(p(10,1)).
+
 % verificando se é adjacente
 % PRECISA DESSA REGRA? Não podemos fazer igual no S de andar em X?
 adjacente(p(X,Y), p(FX, FY)) :-
@@ -41,5 +43,6 @@ s([p(X,Y), Sacola, Sujeiras],[p(X,SY),Sacola,Sujeiras]) :-
   (SY is Y + 1; SY is Y - 1), writeln('subiu no elevador'),
   not(fora_do_mapa(p(X,SY))).
 
-meta([p(_, _), _, []]). 
-
+meta([Pos, _, Lixos]) :-
+  powerstation(Pos),
+  Lixos = [].
