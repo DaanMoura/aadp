@@ -20,15 +20,15 @@ fora_do_mapa(p(X,Y)) :-
   Y = 6.
 
 % pegando sujeira
-s([p(X,Y), Sacola, Sujeiras], [p(X,Y), Sacola2, Sujeiras2]) :-
-    pertence(p(X,Y),Sujeiras),
-    retirar_elemento(p(X,Y),Sujeiras,Sujeiras2),
+s([Pos, Sacola, Sujeiras], [Pos, Sacola2, Sujeiras2]) :-
+    pertence(Pos,Sujeiras),
+    retirar_elemento(Pos,Sujeiras,Sujeiras2), writeln('limpou sujeira'),
     Sacola2 is Sacola + 1. 
     
 % andando em X 
 s([p(X, Y), Sacola, Sujeiras], [p(SX, Y), Sacola, Sujeiras]) :- 
-    (SX is X + 1 ; SX is X - 1),
+    (SX is X + 1 ; SX is X - 1), writeln('andou em X'),
     not(fora_do_mapa(p(SX, Y))).
 
-meta([p(3, 1), _, []]). % ainda não é a meta real
+meta([p(_, _), _, []]). 
 
