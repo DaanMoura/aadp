@@ -5,30 +5,30 @@
 
 % verificando se é adjacente
 adjacente(p(X,Y), p(FX, FY)) :-
-    (   FX is X - 1;
+    (  FX is X +1; 
     FX = X;
-    FX is X +1),
+    FX is X - 1),
     (   FY is Y - 1;
     FY = Y;
     FY is Y +1).
 
 % verificando limites
-esta_no_mapa(p(X,Y)) :-
-    X > 0,
-    Y > 0,
-    X < 11,
-    Y < 6.
+fora_do_mapa(p(X,Y)) :-
+  X = 0;
+  Y = 0;
+  X = 11;
+  Y = 6.
 
 % pegando sujeira
-s([Pos, Sacola, Sujeiras], [Pos, Sacola2, Sujeiras2]) :-
-    pertence(Pos,Sujeiras),
-    retirar_elemento(Pos,Sujeiras,Sujeiras2),
+s([p(X,Y), Sacola, Sujeiras], [p(X,Y), Sacola2, Sujeiras2]) :-
+    pertence(p(X,Y),Sujeiras),
+    retirar_elemento(p(X,Y),Sujeiras,Sujeiras2),
     Sacola2 is Sacola + 1. 
     
-% andando 
-s([p(X, Y), Sacola, Sujeiras], [p(SX, SY), Sacola, Sujeiras]) :- 
-    esta_no_mapa(p(SX, SY)),
-    adjacente(p(X,Y), p(SX, SY)).
+% andando em X 
+s([p(X, Y), Sacola, Sujeiras], [p(SX, Y), Sacola, Sujeiras]) :- 
+    (SX is X + 1 ; SX is X - 1),
+    not(fora_do_mapa(p(SX, Y))).
 
-meta([p(_, _), _, []]).
-% buscas 2 sujeiras - carregador - guarda a ultima sujeira
+meta([p(3, 1), _, []]). % ainda não é a meta real
+
