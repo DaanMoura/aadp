@@ -5,19 +5,12 @@
 
 % elevadores
 elevador(4).
-elevador(8).
+elevador(9).
+
+lixeira(p(1,3)).
+lixeira(p(10,5)).
 
 powerstation(p(10,1)).
-
-% verificando se é adjacente
-% PRECISA DESSA REGRA? Não podemos fazer igual no S de andar em X?
-adjacente(p(X,Y), p(FX, FY)) :-
-    (  FX is X +1; 
-    FX = X;
-    FX is X - 1),
-    (   FY is Y - 1;
-    FY = Y;
-    FY is Y +1).
 
 % verificando limites
 fora_do_mapa(p(X,Y)) :-
@@ -29,20 +22,27 @@ fora_do_mapa(p(X,Y)) :-
 % pegando sujeira
 s([Pos, Sacola, Sujeiras], [Pos, Sacola2, Sujeiras2]) :-
     pertence(Pos,Sujeiras),
-    retirar_elemento(Pos,Sujeiras,Sujeiras2), writeln('limpou sujeira'),
-    Sacola2 is Sacola + 1. 
+    retirar_elemento(Pos,Sujeiras,Sujeiras2),
+    Sacola < 2,
+    Sacola2 is Sacola + 1, writeln('limpou sujeira'). 
+
+% esvaziando sacola na lixeira
+s([Pos,Sacola,Sujeiras],[Pos,Sacola2,Sujeiras]) :-
+  lixeira(Pos),
+  Sacola > 0,
+  Sacola2 is 0, writeln('esvaziou sacola').
 
 % andando em X 
 s([p(X, Y), Sacola, Sujeiras], [p(SX, Y), Sacola, Sujeiras]) :- 
-    (SX is X + 1 ; SX is X - 1), writeln('andou em X'),
-    not(fora_do_mapa(p(SX, Y))).
+    (SX is X + 1 ; SX is X - 1),
+    not(fora_do_mapa(p(SX, Y))), writeln('andou em X').
 
 %subindo no elevador
 s([p(X,Y), Sacola, Sujeiras],[p(X,SY),Sacola,Sujeiras]) :-
   elevador(X),
-  (SY is Y + 1; SY is Y - 1), writeln('subiu no elevador'),
-  not(fora_do_mapa(p(X,SY))).
+  (SY is Y + 1; SY is Y - 1),
+  not(fora_do_mapa(p(X,SY))), writeln('subiu no elevador').
 
 meta([Pos, _, Lixos]) :-
   powerstation(Pos),
-  Lixos = [].
+  Lixos = [], writeln('pronto').
