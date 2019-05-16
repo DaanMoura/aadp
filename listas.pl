@@ -5,11 +5,11 @@ positivo(N) :- N > 0.
 zero(N) :- 
   not(negativo(N)), not(positivo(N)).
 
-pertence(Elem,[Elem|_]).
-pertence(Elem,[_|Cauda]) :- 
-  pertence(Elem,Cauda).
+pertence(Elem,[Elem|_]).			%pertence se é a cabeca
+pertence(Elem,[_|Cauda]) :- 		%pertence se pertence à cauda
+  pertence(Elem,Cauda).						
 
-inserir(Elem,Lista,[Elem|Lista]).
+inserir(Elem,Lista,[Elem|Lista]). 		%insere no inicio
 
 inserir_ultimo(Elem,[],[Elem]).
 inserir_ultimo(Elem,[Cabeca|Cauda],[Cabeca|Cauda_Resultante]) :- 
@@ -32,7 +32,7 @@ concatena([Cabeca|Cauda],L2,[Cabeca|Resultado]) :-
   concatena(Cauda,L2,Resultado).
 
 soma([],0).
-soma([Elem|Cauda],S) :- 
+soma([Elem|Cauda],S) :- 				%Soma elementos da lista
   soma(Cauda,S1), 
   S is S1 + Elem.
 
