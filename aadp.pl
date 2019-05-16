@@ -2,6 +2,9 @@
 :- [listas].
 :- [busca_profundidade].
 :- [busca_largura].
+%:- [cenariobesta].
+%:- [cenariocomum].
+%:- [cenariomedio].
 
 
 % elevadores
@@ -10,7 +13,7 @@ elevador(9).
 
 %Definindo lixeiras
 lixeira(p(1,3)).
-lixeira(p(10,5)).
+lixeira(p(10,5)).	
 
 %Definindo Power Station
 powerstation(p(10,1)).
