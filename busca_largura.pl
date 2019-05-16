@@ -19,3 +19,7 @@ estende([Estado|Caminho],ListaSucessores) :-
     (s(Estado,Sucessor),not(pertence(Sucessor,[Estado|Caminho]))),
     ListaSucessores),!.
 
+
+%Entrada exemplo
+%?- solucao_bl([p(1,1),0,[p(3,3),p(3,5)]], Meta)).
+
