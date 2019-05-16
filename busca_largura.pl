@@ -2,7 +2,7 @@
 :- [listas]. % importa regras de lista
 
 solucao_bl(Inicial,Solucao) :-
-  bl([[Inicial]],Solucao).
+  bl([[Inicial]],Solucao),writeln(Solucao).
 
 bl([[Estado|Caminho]|_],[Estado|Caminho]) :-
   meta(Estado).

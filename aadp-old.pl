@@ -12,7 +12,8 @@ lixeira(p(10,5)).
 
 powerstation(p(10,1)).
 
-parede(p(7,1)).
+parede(p(4,1),p(5,1)).
+%p(7,1)parede(p(6,1),p(7,1))
 
 % verificando limites
 fora_do_mapa(p(X,Y)) :-
@@ -22,7 +23,7 @@ fora_do_mapa(p(X,Y)) :-
   Y = 6.
 
 pode_passar(Pos,Pos2) :-
-  not(parede(Pos2)),
+  not((parede(Pos,Pos2);parede(Pos2,Pos))),
   not(fora_do_mapa(Pos2)).
 
 % pegando sujeira
