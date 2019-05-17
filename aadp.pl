@@ -4,11 +4,8 @@
 :- [busca_largura].
 
 :- [caso_0].
-%:- [caso_1].
-%:- [caso_2].
-
-
-
+%:- [caso_1].   
+%:- [caso_2].    %% mudar para  10x10
 
 % verificando limites
 fora_do_mapa(p(X,Y)) :-
@@ -26,7 +23,7 @@ s([Pos, Sacola, Sujeiras], [Pos, Sacola2, Sujeiras2]) :-  	%estado (P,Sa,Su) vem
     pertence(Pos,Sujeiras),										                 %Essa posicao pertence à lista de sujeiras &
     retirar_elemento(Pos,Sujeiras,Sujeiras2),					         %Sujeiras 2 é sujeira sem o 'elemento' Pos &
     Sacola < 2,													                       % A sacola não está cheia 				   &
-    Sacola2 is Sacola + 1, writeln('limpou sujeira'). 			   % Sa2 tem 1 lixo a mais que Sa 					
+    Sacola2 is Sacola + 1, writeln('limpou sujeira'). 			       				
 
 % esvaziando sacola na lixeira
 s([Pos,Sacola,Sujeiras],[Pos,Sacola2,Sujeiras]) :-			     %(P,Sa,Su) vem antes de (P,Sa2,Su2) se

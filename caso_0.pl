@@ -12,6 +12,8 @@ elevador(9).
 %Definindo lixeiras
 lixeira(p(6,1)).
 
+parede(p(5,1)).
+
 %Definindo PowerStation
 powerstation(p(10,1)).
 
