@@ -12,7 +12,7 @@ fora_do_mapa(p(X,Y)) :-
   X = 11;
   Y = 6.
 
-pode_passar(Pos,Pos2) :-
+pode_passar(_,Pos2) :-
   not(parede(Pos2)),
   not(fora_do_mapa(Pos2)).
 
@@ -38,7 +38,7 @@ s([p(X, Y), Sacola, Sujeiras], [p(SX, Y), Sacola, Sujeiras]) :-     % (XY,Sa,Su)
 s([p(X,Y), Sacola, Sujeiras],[p(X,SY),Sacola,Sujeiras]) :-		%Andar no Y ( apenas no elevador) se
   elevador(X),													                         	%Há um elevador no X atual
   (SY is Y + 1; SY is Y - 1),										                  %o Y novo está há um passo do antigo, subida ou descida
-  not(fora_do_mapa(p(X,SY))), writeln('subiu no elevador').		   	%a nova posição não está fora do mapa
+  not(fora_do_mapa(p(X,SY))), writeln('elevador').		          	%a nova posição não está fora do mapa
 
 meta([Pos, 0, Lixos]) :-										      %A meta é um estado onde o robo está na powerStation,
   powerstation(Pos),												           %e a lista de lixos está vazia

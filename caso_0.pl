@@ -3,7 +3,6 @@
 :- [busca_largura].
 
 
-
 % ?- solucao_bp([p(1,1),0,[p(3,1), p(5,1)]], Meta).
 
 % elevadores
