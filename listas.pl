@@ -1,19 +1,18 @@
 % prolog
 
-<<<<<<< HEAD
-pertence(Elem,[Elem|_]).
-pertence(Elem,[_|Cauda]) :- 
-  pertence(Elem,Cauda).
 
-=======
+pertence(Elem,[Elem|_]).
+pertence(Elem,[_|Cauda]) :-  pertence(Elem,Cauda).
+
+
 negativo(N) :- N < 0.
 positivo(N) :- N > 0.
-zero(N) :- 
-  not(negativo(N)), not(positivo(N)).
+zero(N) :-  not(negativo(N)), not(positivo(N)).
+
 
 pertence(Elem,[Elem|_]).			%pertence se é a cabeca
 pertence(Elem,[_|Cauda]) :- 		%pertence se pertence à cauda
-  pertence(Elem,Cauda).						
+    pertence(Elem,Cauda).						
 
 inserir(Elem,Lista,[Elem|Lista]). 		%insere no inicio
 
@@ -21,7 +20,6 @@ inserir_ultimo(Elem,[],[Elem]).
 inserir_ultimo(Elem,[Cabeca|Cauda],[Cabeca|Cauda_Resultante]) :- 
   inserir_ultimo(Elem,Cauda,Cauda_Resultante).
 
->>>>>>> 628b11b6dcdce5ac6f53dadb6c2f6cfdba0078cb
 retirar_elemento(Elem,[Elem|Cauda],Cauda).
 retirar_elemento(Elem,[Cabeca|Cauda],[Cabeca|Resultado]) :- 
   retirar_elemento(Elem,Cauda,Resultado).
@@ -30,8 +28,7 @@ concatena([],L,L).
 concatena([Cabeca|Cauda],L2,[Cabeca|Resultado]) :- 
   concatena(Cauda,L2,Resultado).
 
-<<<<<<< HEAD
-=======
+
 soma([],0).
 soma([Elem|Cauda],S) :- 				%Soma elementos da lista
   soma(Cauda,S1), 
@@ -77,4 +74,3 @@ separa_sem_zero([Elem|Cauda],Cauda_P,Cauda_N) :-
   separa_sem_zero(Cauda,Cauda_P,Cauda_N), 
   zero(Elem).
 
->>>>>>> 628b11b6dcdce5ac6f53dadb6c2f6cfdba0078cb
