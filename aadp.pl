@@ -2,11 +2,8 @@
 :- [listas].
 :- [busca_profundidade].
 :- [busca_largura].
-:- [testeImportacao].
-
-
-
-
+:- [caso_0].
+%:- [testeImportacao].
 
 % verificando limites
 fora_do_mapa(p(X,Y)) :-

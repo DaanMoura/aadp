@@ -3,7 +3,7 @@
 :- [busca_largura].
 
 % elevadores
-elevador(0).
+elevador(5).
 %%elevador(10).
 
 %Definindo lixeiras
@@ -12,8 +12,7 @@ lixeira(p(5,1)).
 %Definindo Power Station
 powerstation(p(6,1)).
 
-elevador(7).
-elevador(9).
+
 parede(p(8,2)).
 parede(p(8,3)).
 parede(p(8,4)).
