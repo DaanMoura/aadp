@@ -2,8 +2,13 @@
 :- [listas].
 :- [busca_profundidade].
 :- [busca_largura].
+
 :- [caso_0].
-%:- [testeImportacao].
+%:- [caso_1].
+%:- [caso_2].
+
+
+
 
 % verificando limites
 fora_do_mapa(p(X,Y)) :-
@@ -30,12 +35,12 @@ s([Pos,Sacola,Sujeiras],[Pos,Sacola2,Sujeiras]) :-			     %(P,Sa,Su) vem antes d
   Sacola2 is 0, writeln('esvaziou sacola').				           		%A nova sacola está vazia
 
 % andando em X 
-s([p(X, Y), Sacola, Sujeiras], [p(SX, Y), Sacola, Sujeiras]) :-     % (XY,Sa,Su) vem antes de (SXY,Sa,Su) se
+s([p(X,Y), Sacola, Sujeiras], [p(SX,Y), Sacola, Sujeiras]) :-     % (XY,Sa,Su) vem antes de (SXY,Sa,Su) se
     (SX is X + 1 ; SX is X - 1),									                   % o x novo está à um passo do antigo, seja direita ou esquerda
     pode_passar(p(X,Y),p(SX,Y)).									                   % X -> SX é navegável
 
 %subindo no elevador
-s([p(X,Y), Sacola, Sujeiras],[p(X,SY),Sacola,Sujeiras]) :-		%Andar no Y ( apenas no elevador) se
+s([p(X,Y), Sacola, Sujeiras],[p(X,SY),Sacola,Sujeiras]) :-		  %Andar no Y ( apenas no elevador) se
   elevador(X),													                         	%Há um elevador no X atual
   (SY is Y + 1; SY is Y - 1),										                  %o Y novo está há um passo do antigo, subida ou descida
   not(fora_do_mapa(p(X,SY))), writeln('elevador').		          	%a nova posição não está fora do mapa
