@@ -20,6 +20,5 @@ estende([Estado|Caminho],ListaSucessores) :-
     ListaSucessores),!.
 
 
-%Entrada exemplo
-%?- solucao_bl([p(1,1),0,[p(3,3),p(3,5)]], Meta)).
+
 
